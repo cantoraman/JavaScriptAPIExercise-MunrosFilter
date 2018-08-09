@@ -11,3 +11,12 @@ MunroListView.prototype.bindEvents = function () {
     this.render();
   });
 };
+
+MunrosListView.prototype.render = function () {
+  this.munros.forEach((munro)  => {
+    const munroView = new MunroView(this.container, munro);
+    munroView.render();
+  });
+};
+
+module.exports = MunrosListView;
