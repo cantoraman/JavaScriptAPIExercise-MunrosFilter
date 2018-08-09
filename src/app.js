@@ -1,4 +1,5 @@
 const MunroListView = require('./views/munros_list_view.js');
+const SelectView = require('./views/select_view.js');
 const Munros = require('./models/munros.js');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,5 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const munros = new Munros();
   munros.getData();
+
+  const selectView = new SelectView();
+  selectView.bindEvents();
+  //selectView - bind events
 
 });

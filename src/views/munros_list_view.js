@@ -3,17 +3,20 @@ const MunroView = require('./munro_view.js');
 
 const MunrosListView = function (container){
   this.container = container;
+  this.munros = null;
 }
 
-MunroListView.prototype.bindEvents = function () {
+MunrosListView.prototype.bindEvents = function () {
   PubSub.subscribe('Munros:munros-list-ready', (evt) => {
     this.munros = evt.detail;
-    this.render();
+
+    this.render(this.munros);
+
   });
 };
 
-MunrosListView.prototype.render = function () {
-  this.munros.forEach((munro)  => {
+MunrosListView.prototype.render = function (munros) {
+  munros.forEach((munro)  => {
     const munroView = new MunroView(this.container, munro);
     munroView.render();
   });
